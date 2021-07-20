@@ -3,7 +3,7 @@ use rand::Rng;
 
 fn main() {
     let matches = App::new("cmd20")
-        .version("0.1.0")
+        .version("0.2.0")
         .arg(
             Arg::with_name("dice")
                 .short("d")
@@ -19,16 +19,16 @@ fn main() {
     let roll = rng.gen_range(1, dice + 1);
 
     //TODO: Add dice templates
-    // let template = match dice {
-    //     100 => r"",
-    //     20 => r"",
-    //     12 => r"",
-    //     10 => r"",
-    //     8 => r"",
-    //     6 => r"",
-    //     4 => r"",
-    //     _ => "@",
-    // };
+    let template = match dice {
+        100 => "@",
+        20 => "@",
+        12 => "@",
+        10 => "@",
+        8 => "@",
+        6 => " -----\n|     |\n|  @  |\n|     |\n -----",
+        4 => "  / \\\n / @ \\\n/_____\\",
+        _ => "@",
+    };
 
-    println!("{}", roll);
+    println!("{}", template.replace("@", &roll.to_string()));
 }
