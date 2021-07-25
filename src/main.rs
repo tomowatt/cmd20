@@ -3,7 +3,7 @@ use rand::Rng;
 
 fn main() {
     let matches = App::new("cmd20")
-        .version("0.2.0")
+        .version("0.3.0")
         .arg(
             Arg::with_name("dice")
                 .short("d")
@@ -24,7 +24,7 @@ fn main() {
         20 => "@",
         12 => "@",
         10 => "@",
-        8 => "@",
+        8 => "  / \\\n / @ \\\n/_____\\\n\\     /\n \\   /\n  \\ /",
         6 => " -----\n|     |\n|  @  |\n|     |\n -----",
         4 => "  / \\\n / @ \\\n/_____\\",
         _ => "@",
