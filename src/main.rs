@@ -1,9 +1,28 @@
 use clap::{App, Arg};
 use rand::Rng;
 
+fn pad(roll: usize, dice: usize) -> String {
+    fn add_padding(roll: String) -> String {
+        let padded: String = match roll.len() {
+            3 => roll,
+            2 => { "@ *".replace("@", &roll[..1]).replace("*", &roll[1..]) },
+            1 => " @ ".replace("@", &roll),
+            _ => roll,
+        };
+        padded
+    };
+
+    let padded: String = match dice {
+        100 => add_padding(roll.to_string()),
+        10..=99 => add_padding(roll.to_string()),
+        _ => roll.to_string(),
+    };
+    padded
+}
+
 fn main() {
     let matches = App::new("cmd20")
-        .version("0.3.0")
+        .version("0.4.0")
         .arg(
             Arg::with_name("dice")
                 .short("d")
@@ -18,6 +37,8 @@ fn main() {
     let mut rng = rand::thread_rng();
     let roll = rng.gen_range(1, dice + 1);
 
+    let padded_roll = pad(roll, dice);
+
     //TODO: Add dice templates
     let template = match dice {
         100 => "@",
@@ -30,5 +51,5 @@ fn main() {
         _ => "@",
     };
 
-    println!("{}", template.replace("@", &roll.to_string()));
+    println!("{}", template.replace("@", &padded_roll));
 }
