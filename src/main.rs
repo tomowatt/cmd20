@@ -5,7 +5,7 @@ fn pad(roll: usize, dice: usize) -> String {
     fn add_padding(roll: String) -> String {
         let padded: String = match roll.len() {
             3 => roll,
-            2 => { "@ *".replace("@", &roll[..1]).replace("*", &roll[1..]) },
+            2 => "@ *".replace("@", &roll[..1]).replace("*", &roll[1..]),
             1 => " @ ".replace("@", &roll),
             _ => roll,
         };
