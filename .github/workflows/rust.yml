@@ -10,6 +10,24 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
+  lint:
+  
+    runs-on: ubuntu-latest
+    
+    steps:
+    
+    - name: Checkout Code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - uses: github/super-linter@v4.5.1
+      name: Super-Linter
+      env:
+        VALIDATE_ALL_CODEBASE: true
+        DEFAULT_BRANCH: main
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
   build:
 
     runs-on: ubuntu-latest
