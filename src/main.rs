@@ -22,7 +22,7 @@ fn pad(roll: usize, dice: usize) -> String {
 
 fn main() {
     let matches = App::new("cmd20")
-        .version("0.4.0")
+        .version("0.5.0")
         .arg(
             Arg::with_name("dice")
                 .short("d")
@@ -43,7 +43,7 @@ fn main() {
     let template = match dice {
         100 => "@",
         20 => "@",
-        12 => "@",
+        12 => "  ,'.\n,'   `.\n\\ @ /\n \\___/",
         10 => "  // \\\\\n //   \\\\\n// @ \\\\\n|/ \\ / \\|\n \\  |  /\n  \\ | /",
         8 => "  / \\\n / @ \\\n/_____\\\n\\     /\n \\   /\n  \\ /",
         6 => " -----\n|     |\n|  @  |\n|     |\n -----",
