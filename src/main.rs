@@ -2,6 +2,9 @@ use clap::{App, Arg};
 
 use cmd20::cmd20;
 
+#[cfg(test)]
+mod tests;
+
 fn main() {
     let matches = App::new("cmd20")
         .version("0.8.0")

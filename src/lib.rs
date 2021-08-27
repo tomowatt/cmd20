@@ -1,6 +1,6 @@
 use rand::Rng;
 
-fn pad(roll: usize, dice: usize) -> String {
+pub fn pad(roll: usize, dice: usize) -> String {
     fn add_padding(roll: String) -> String {
         let padded: String = match roll.len() {
             3 => roll,
