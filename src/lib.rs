@@ -9,7 +9,7 @@ pub fn pad(roll: usize, dice: usize) -> String {
             _ => roll,
         };
         padded
-    };
+    }
 
     let padded: String = match dice {
         100 => add_padding(roll.to_string()),
