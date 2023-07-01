@@ -14,7 +14,7 @@ jobs:
       with:
         fetch-depth: 0
 
-    - uses: github/super-linter@v4.5.1
+    - uses: github/super-linter@v5.1.0
       name: Super-Linter
       env:
         VALIDATE_ALL_CODEBASE: true
