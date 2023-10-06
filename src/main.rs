@@ -1,23 +1,20 @@
-use clap::{App, Arg};
+use clap::Parser;
 
 use cmd20::cmd20;
 
 #[cfg(test)]
 mod tests;
 
-fn main() {
-    let matches = App::new("cmd20")
-        .version("0.8.0")
-        .arg(
-            Arg::with_name("dice")
-                .short("d")
-                .long("dice")
-                .default_value("20")
-                .possible_values(&["4", "6", "8", "10", "12", "20", "100"]),
-        )
-        .get_matches();
+#[derive(Parser)]
+struct Args {
+    #[arg(short, long, default_value_t = 20)]
+    dice: u8,
+}
 
-    let dice: usize = matches.value_of("dice").unwrap().parse().unwrap();
+fn main() {
+    let args = Args::parse();
+
+    let dice: usize = args.dice.into();
 
     println!("{}", cmd20(dice));
 }
