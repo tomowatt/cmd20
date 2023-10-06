@@ -21,7 +21,7 @@ pub fn pad(roll: usize, dice: usize) -> String {
 
 pub fn cmd20(dice: usize) -> String {
     let mut rng = rand::thread_rng();
-    let roll = rng.gen_range(1, dice + 1);
+    let roll = rng.gen_range(1..dice + 1);
 
     let padded_roll = pad(roll, dice);
 
