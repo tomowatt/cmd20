@@ -8,6 +8,10 @@ steps:
       - cargo install buildkite-test-collector
     key: setup
 
+  - label: "📎 Clippy"
+    command: cargo clippy
+    key: clippy
+
   - label: "👷‍♂️ Build"
     command: cargo build --release --verbose
     key: build
