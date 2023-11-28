@@ -1,0 +1,9 @@
+steps:
+  - label: "🧱 Setup"
+    command: cargo install buildkite-test-collector
+
+  - label: "👷‍♂️ Build"
+    command: cargo build --release --verbose
+
+  - label: "🧪 Test"
+    command: cargo test -- -Z unstable-options --format json --report-time | buildkite-test-collector
