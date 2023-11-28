@@ -1,3 +1,7 @@
+agents:
+  rustup: true
+  cargo: true
+
 steps:
   - label: "🧱 Setup"
     commands: 
