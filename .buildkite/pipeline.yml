@@ -1,9 +1,16 @@
 steps:
   - label: "🧱 Setup"
     command: cargo install buildkite-test-collector
+    key: setup
 
   - label: "👷‍♂️ Build"
     command: cargo build --release --verbose
+    key: build
+    depends_on: 
+      - setup
 
   - label: "🧪 Test"
     command: cargo test -- -Z unstable-options --format json --report-time | buildkite-test-collector
+    key: test
+    depends_on: 
+      - build
