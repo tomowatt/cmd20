@@ -1,6 +1,7 @@
 steps:
   - label: "🧱 Setup"
-    command: cargo install buildkite-test-collector
+    commands: 
+      - cargo install buildkite-test-collector
     key: setup
 
   - label: "👷‍♂️ Build"
@@ -10,7 +11,9 @@ steps:
       - setup
 
   - label: "🧪 Test"
-    command: cargo test -- -Z unstable-options --format json --report-time | buildkite-test-collector
+    commands:
+      - rustup override set nightly
+      - cargo test -- -Z unstable-options --format json --report-time | buildkite-test-collector
     key: test
     depends_on: 
       - build
