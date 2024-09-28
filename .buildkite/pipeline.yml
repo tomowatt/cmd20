@@ -4,7 +4,7 @@ agents:
 
 steps:
   - label: "🧱 Setup"
-    commands: 
+    commands:
       - cargo install buildkite-test-collector
     key: setup
 
@@ -15,7 +15,7 @@ steps:
   - label: "👷‍♂️ Build"
     command: cargo build --release --verbose
     key: build
-    depends_on: 
+    depends_on:
       - setup
 
   - label: "🧪 Test"
@@ -23,5 +23,5 @@ steps:
       - rustup override set nightly
       - cargo test -- -Z unstable-options --format json --report-time | buildkite-test-collector
     key: test
-    depends_on: 
+    depends_on:
       - build
